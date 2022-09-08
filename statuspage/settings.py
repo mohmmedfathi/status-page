@@ -15,9 +15,11 @@ from pathlib import Path
 import os
 from pickle import TRUE
 from dotenv import load_dotenv
+
 load_dotenv('.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 DEBUG = TRUE
 
 # Quick-start development settings - unsuitable for production
@@ -29,6 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', None)
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG =  os.environ.get('DEBUG', None)
+
 ALLOWED_HOSTS = []
 
 
@@ -46,6 +49,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     #'knox',
     'users',
+    'django_crontab',
+    
 ]
 
 MIDDLEWARE = [
@@ -139,8 +144,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+# STATIFILE_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
+# STATIC_URL = '/static/'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -150,3 +161,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 1
 }
+
+CRONJOBS = [
+    ('*/1 * * * *','website.cron.hi')
+]

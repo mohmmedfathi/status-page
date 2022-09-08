@@ -14,8 +14,7 @@ class PageSerializer(serializers.ModelSerializer):
         model = Page
         fields = "__all__"
         
-    def __str__(self):
-        return self.name
+
 
 class PageStatusHistorySerializer(serializers.ModelSerializer):
 
