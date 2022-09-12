@@ -40,9 +40,15 @@ class PageRetrieve(ModelViewSet):
         return self.retrieve(request,*args,**kwargs)
 """
 
+# class PageStatusHistory(ModelViewSet):
+#     queryset = Page_status_history.objects.all()
+#     serializer_class = PageStatusHistorySerializer
+#     authentication_classes = [TokenAuthentication]
+#     permission_classes = [IsAuthenticated]
+   
 class PageStatusHistory(ModelViewSet):
     queryset = Page_status_history.objects.all()
     serializer_class = PageStatusHistorySerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-   
+

@@ -26,13 +26,16 @@ route = DefaultRouter()
 
 route.register(r'website',Website)
 route.register(r'page',Page)
-route.register(r'page-history',PageStatusHistory)
+#route.register(r'page-history',PageStatusHistory)
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('users.urls')),
     path('', include(route.urls)),
+    path('page-history/',PageStatusHistory.as_view({'get': 'list'})),
+    path('page-history/<int:pk>/',PageStatusHistory.as_view({'get': 'retrieve'})),
    # path('website/<int:pk>',WebsiteRetrieve.as_view()),
 
   #  path('page/<int:pk>',PageRetrieve.as_view()),

@@ -48,9 +48,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     #'knox',
+    'django_celery_results',
     'users',
-    'django_crontab',
-    
+    #'django_crontab',
+    #'rest_framework_swagger'
 ]
 
 MIDDLEWARE = [
@@ -161,7 +162,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 1
 }
-
-CRONJOBS = [
-    ('*/1 * * * *','website.cron.hi')
-]
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'django-db'
+# CRONJOBS = [
+#     ('*/1 * * * *','website.cron.hi')
+# ]

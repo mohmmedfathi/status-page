@@ -27,5 +27,4 @@ class Page_status_history(models.Model):
     headers = models.TextField(null = True)
     response_time = models.IntegerField(null = False)
     sended_at = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return self.Page
+    
