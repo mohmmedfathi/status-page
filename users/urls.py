@@ -1,17 +1,20 @@
 from django.urls import path, include
-from . import views 
+from . import api 
 from rest_framework.routers import DefaultRouter
 from rest_framework import routers
-from .views import viewsets_user
+from .api import viewsets_user
 from rest_framework.authtoken import views
-from .views import Logout
+
 
 route = DefaultRouter()
-route.register(r'user', viewsets_user)
+#route.register(r'user', viewsets_user)
 
 urlpatterns = [
-path('', include(route.urls)) ,   
-path('token/',views.obtain_auth_token),
-path('logout/',Logout.as_view())
+    path('', include(route.urls)),
 
+    path('token/',views.obtain_auth_token),
+    
+    # path('user/',viewsets_user.as_view({'post': 'create',
+    #                                     'get':'list'})),
+    path('user/',viewsets_user.as_view({'post': 'create'})),
 ]

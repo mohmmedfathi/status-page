@@ -96,6 +96,9 @@ __pypackages__/
 # Celery stuff
 celerybeat-schedule
 celerybeat.pid
+
+dump.rdb
+ToDo
 # SageMath parsed files
 *.sage.py
 # Environments

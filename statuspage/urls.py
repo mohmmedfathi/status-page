@@ -16,26 +16,19 @@ Including another URLconf
 from xml.etree.ElementInclude import include
 from django.contrib import admin
 from django.urls import path, include
-from website.views import Website,Page,PageStatusHistory
-from rest_framework.routers import DefaultRouter
+
+
 from rest_framework.authtoken import views
 from django.conf.urls.static import static
 from django.conf import settings
-
-route = DefaultRouter()
-
-route.register(r'website',Website)
-route.register(r'page',Page)
-#route.register(r'page-history',PageStatusHistory)
-
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('users.urls')),
-    path('', include(route.urls)),
-    path('page-history/',PageStatusHistory.as_view({'get': 'list'})),
-    path('page-history/<int:pk>/',PageStatusHistory.as_view({'get': 'retrieve'})),
+    path('',include('website.urls')),
+   
+
    # path('website/<int:pk>',WebsiteRetrieve.as_view()),
 
   #  path('page/<int:pk>',PageRetrieve.as_view()),
@@ -43,5 +36,4 @@ urlpatterns = [
 
     #path('page-history/<int:pk>',PageStatusHistoryRetrieve.as_view()),
 ]
-# if settings.DEBUG:
-# 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

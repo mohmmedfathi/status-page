@@ -20,7 +20,6 @@ load_dotenv('.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = TRUE
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -32,7 +31,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 DEBUG =  os.environ.get('DEBUG', None)
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'website',
     'rest_framework',
     'rest_framework.authtoken',
-    #'knox',
+    'django_celery_beat',
     'django_celery_results',
     'users',
     #'django_crontab',
@@ -88,29 +88,29 @@ WSGI_APPLICATION = 'statuspage.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-"""
-DATABASES = {
-    'default':{
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('NAME', None),
-        'USER': os.environ.get('USER', None),
-        'PASSWORD': os.environ.get('PASSWORD', None),
-        'HOST': os.environ.get('HOST', None),
-        'PORT': os.environ.get('PORT', None),
-    }
-}
-"""
 
 DATABASES = {
     'default':{
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'status_page',
-        'USER': 'postgres',
-        'PASSWORD': '1',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
+
+
+# DATABASES = {
+#     'default':{
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'status_page',
+#         'USER': 'postgres',
+#         'PASSWORD': '1',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -164,6 +164,4 @@ REST_FRAMEWORK = {
 }
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'django-db'
-# CRONJOBS = [
-#     ('*/1 * * * *','website.cron.hi')
-# ]
+
