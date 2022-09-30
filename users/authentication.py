@@ -5,6 +5,7 @@ from rest_framework.authtoken.models import Token
 class TokenAuthentication(BaseAuthentication):
     def authenticate(self, request):
         token = request.META.get('HTTP_AUTHENTICATE',None)
+        print(token)
         if token is None:
             return None
         

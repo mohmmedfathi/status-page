@@ -10,7 +10,7 @@ class Website(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL,null = True)
     name = models.CharField(max_length=100,null = False)
     url = models.URLField(max_length=200,null = True)
-    waiting_time_before_send = models.IntegerField(null = False)
+    waiting_time_before_send = models.IntegerField(null = True)
     
     def __str__(self):
         return self.name

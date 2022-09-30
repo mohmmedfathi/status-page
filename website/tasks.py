@@ -7,6 +7,7 @@ from .models import PageHistory
 from statuspage import settings
 from celery import shared_task
 from django.contrib.auth.models import User
+import requests
 
 @shared_task
 def task():
