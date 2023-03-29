@@ -1,5 +1,5 @@
 # status-page
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/alaa-%D9%90ahmed-6a36bb199/]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 [![MIT License][license-shield]][license-url]
 
 <br />
