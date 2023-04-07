@@ -15,7 +15,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
- powerful tool for businesses and organizations that need to monitor the status of their critical services and keep their customers and stakeholders informed if website get down.
+ website tool for organizations and persons that need to monitor the status of their services and keep their customers and stakeholders informed if website get down.
 <br>
 
 
